@@ -342,7 +342,7 @@ function create_mn_configuration() {
         else :
         fi
         if [ ${net} -eq 4 ]; then
-           sed -e "s/XXX_GIT_PROJECT_XXX/${CODENAME}/" -e "s/XXX_NUM_XXY//" -e "s/XXX_NUM_XXX/${NUM}/" -e "s/XXX_PASS_XXX/${PASS}/" -e "s/XXX_IPV6_INT_BASE_XXX/[${IPV4_ADDRESS}/" -e "s/:XXX_NETWORK_BASE_TAG_XXX:://" -e "s/XXX_MNODE_INBOUND_PORT_XXX/${MNODE_INBOUND_PORT}/" -i ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
+           sed -e "s/XXX_GIT_PROJECT_XXX/${CODENAME}/" -e "s/XXX_NUM_XXY//" -e "s/XXX_NUM_XXX/${NUM}/" -e "s/XXX_PASS_XXX/${PASS}/" -e "s/XXX_IPV6_INT_BASE_XXX/${IPV4_ADDRESS}/" -e "s/:XXX_NETWORK_BASE_TAG_XXX:://" -e "s/XXX_MNODE_INBOUND_PORT_XXX/${MNODE_INBOUND_PORT}/" -i ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
         else
            sed -e "s/XXX_GIT_PROJECT_XXX/${CODENAME}/" -e "s/XXX_NUM_XXY/${NUM}]/" -e "s/XXX_NUM_XXX/${NUM}/" -e "s/XXX_PASS_XXX/${PASS}/" -e "s/XXX_IPV6_INT_BASE_XXX/[${IPV6_INT_BASE}/" -e "s/XXX_NETWORK_BASE_TAG_XXX/${NETWORK_BASE_TAG}/" -e "s/XXX_MNODE_INBOUND_PORT_XXX/${MNODE_INBOUND_PORT}/" -i ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
         fi
@@ -817,6 +817,11 @@ function prepare_mn_interfaces() {
         export ETH_INTERFACE="ens160"
     fi
 
+    # check for scaleway - TODO
+    #if [ -f /sys/class/net/ens2/operstate ]; then
+    #    export ETH_INTERFACE="ens2"
+    #fi
+
     # get the current interface state
     ETH_STATUS=$(cat /sys/class/net/${ETH_INTERFACE}/operstate)
 
@@ -869,7 +874,7 @@ function prepare_mn_interfaces() {
             then
                 echo "IP for masternode already exists, skipping creation" &>> ${SCRIPT_LOGFILE}
             else
-                echo "Creating new IP address for ${CODENAME} masternode nr ${NUM}" &>> ${SCRIPT_LOGFILE}
+                echo "Creating new IP address for ${CODENAME} masternode ${NUM}" &>> ${SCRIPT_LOGFILE}
                 if [ "${NETWORK_CONFIG}" = "/etc/rc.local" ]; then
                     # need to put network config in front of "exit 0" in rc.local
                     sed -e '$i ip -6 addr add '"${IPV6_INT_BASE}"':'"${NETWORK_BASE_TAG}"'::'"${NUM}"'/64 dev '"${ETH_INTERFACE}"'\n' -i ${NETWORK_CONFIG} &>> ${SCRIPT_LOGFILE}
