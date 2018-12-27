@@ -222,7 +222,7 @@ When the script finishes, it will look similar to this:
 
 <img src="docs/images/masternode_vps/end-of-installation.png" alt="installation ended" class="inline"/>
 
-You only have a few steps remaining to complete your masternode configuration.
+You only have a few steps remaining to complete your masternode configuration(the lines which surrounded by red lines are masternode configuration line. We will use this after).
 
 ## Finishing Wallet Configuration & Activate Masternode
 ## Configure masternode configuration files
