@@ -115,7 +115,7 @@ Login to your newly installed node as "root".
 Enter this command to copy the Masternode installation script and install a single ZENZO Masternode:
 
 ```bash
-git clone https://github.com/Zenzo-Ecosystem/vps.git && cd vps && ./install.sh -p zenzo
+git clone https://github.com/Zenzo-Ecosystem/vps.git && cd vps && ./install.sh -p zenzo -g -x
 ```
 
 This prepares the system and installs the ZENZO Masternode daemon. This includes downloading the latest ZENZO masternode release, creating a swap file, configuring the firewall, and compiling the ZENZO Masternode from source code. This process takes about 10-15 minutes.
@@ -159,7 +159,7 @@ While that is underway, go back to your local desktop and open zenzo-qt.
 If you wish to install more than one masternode on the same VPS, you can add a -c parameter to tell the script how many to configure, so for example this would install three ZENZO masternodes (all entered on one line):
 
 ```bash
-git clone https://github.com/Zenzo-Ecosystem/vps.git && cd vps && ./install.sh -p zenzo -c 3
+git clone https://github.com/Zenzo-Ecosystem/vps.git && cd vps && ./install.sh -p zenzo -c 3 -g -x
 ```
 
 If you already have your masternode private keys, you can add them as shown below (all entered on one line):
@@ -173,7 +173,7 @@ Using this command, you can skip the step for "Configure masternode configuratio
 If you are adding new masternode, (and if you installed 2 masternodes already)
 
 ```
-git clone https://github.com/Zenzo-Ecosystem/vps.git && cd vps && ./install.sh -p zenzo -c 3
+git clone https://github.com/Zenzo-Ecosystem/vps.git && cd vps && ./install.sh -p zenzo -c 3 -g -x
 ```
 if you want to use --key option, add --key3 **MASTERNODE PRIVKEY 03**. You are able to use
 ```
@@ -238,64 +238,28 @@ When the script finishes, it will look similar to this:
 
 You only have a few steps remaining to complete your masternode configuration.
 
-## Configure masternode configuration files
-Since this installation method supports multiple masternodes, the zenzo configuration files have a node number added to them (e.g., zenzo_n1.conf, zenzo_n2.conf), stored in the /etc/masternodes directory. If you have a single masternode on the VPS, you will only need to edit /etc/masternodes/zenzo_n1.conf.
-
-To open zenzo_n1.conf for editing, enter these commands:
-```bash
-sudo apt-get install nano
-nano /etc/masternodes/zenzo_n1.conf
-```
-The next step adds your masternode private key.
-
-## Add masternode private key
-What you need to change is only masternode private key.
-(We recommend using IPv6 which is the default, but if you choose IPv4 when you ran the installation script, please edit #NEW_IPv4_ADDRESS_FOR_MASTERNODE_NUMBER to your VPS IP address).
-After typing the nano command, you will see something similar to this.
-
-<img src="docs/images/masternode_vps/insert-your-masternode-private-key.png" alt="add private key" class="inline"/>
-
-Copy the masternode private key from the text file you saved it in, and replace HERE_GOES_YOUR_MASTERNODE_KEY_FOR_MASTERNODE_zenzo_1 with that private key (this typically begins with an 8).
-
-While you have this file opened, copy the information that follows after masternodeaddr=, starting with the open bracket. This is the masternode's IPv6 address and port, and will be needed for the wallet's masternode.conf file.
-
-Once you have your masternode private key entered, press <font color="Green">Ctrl+X</font> .
-Then press <font color="Green">Y</font> to save, and press Enter to exit.
-
-Finally, close and restart your ZENZO wallet so that it will have the new masternode configuration.
-
-## Start your masternodes
-A script for starting all masternodes on the VPS has been created at /usr/local/bin/activate_masternodes_zenzo.sh.
-Run this command after your masternode configuration written above.
-
-```bash
-/usr/local/bin/activate_masternodes_zenzo
-```
-
-The masternode daemons will start and begin loading the ZENZO blockchain.
-
 ## Finishing Wallet Configuration & Activate Masternode
-To activate your nodes from your wallet, one of the last steps is to add a line for the masternode in the masternode.conf file. This file has the following format, with each value separated with a space:
-
-* alias IP:Port masternodeprivatekey collateral_transaction_ID collateral_output_index
-* alias - A short name you use to identify the masternode, you can choose this name as long as it is without spaces (e.g., ZENZOMN1)
-* IP:Port - The IP address (either IPv6 or IPv4) and the Port where the masternode is running, separated by a colon (:). You copied this from the zenzo.conf file on the VPS.
-* collateral_transaction_ID: This is the transaction ID you copied from masternode outputs.
-* collateral_output_index: This is the index you copied from masternode outputs.
-
-From the wallet menu, edit the local wallet **masternode.conf** file. **[Tools > Open Masternode Configuration File]**
-Add the MN conf line, like the example below to the masternode.conf file. Save it, and close the file. It will look like the following example, using your values for each of the fields above. A common mistake is mixing up the private key and the collateral transaction ID--to make this easier, the private key usually begins with an 8.
-
-example.
+## Configure masternode configuration files
+The script generates private key for masternode with -g option. If you chose it, you should get like
 ```
 ZENZOMN1 [2001:19f0:5001:ca6:2085::1]:11771 88xrxxxxxxxxxxxxxxxxxxxxxxx7K 6b4c9xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx7ee23 0
 ```
+
+Please paste this line(s) to your masternode.conf. You can open masternode.conf with **[Tools > Open Masternode Configuration File]**.
 
 The image below shows another example using an IPv4 IP address. If you followed this guide you are probably using an IPv6 address that looks like the line above.
 
 <img src="docs/images/masternode_vps/masternode-conf.png" alt="editing masternode.conf" class="inline"/>
 
 If you are running multiple masternodes, you need to add one of these lines for each masternode, and make sure the private key on each line matches the corresponding private key you entered in the VPS zenzo configuration file for that masternode.
+
+This file has the following format, with each value separated with a space:
+
+* alias IP:Port masternodeprivatekey collateral_transaction_ID collateral_output_index
+* alias - A short name you use to identify the masternode, you can choose this name as long as it is without spaces (e.g., ZENZOMN1)
+* IP:Port - The IP address (either IPv6 or IPv4) and the Port where the masternode is running, separated by a colon (:). You copied this from the zenzo.conf file on the VPS.
+* collateral_transaction_ID: This is the transaction ID you copied from masternode outputs.
+* collateral_output_index: This is the index you copied from masternode outputs.
 
 ## Check syncing status of masternode
 The masternode cannot complete activation until it is fully synced with the ZENZO blockchain network.
@@ -374,6 +338,44 @@ Your ZENZO masternode is now set up and running! Depending on how many masternod
 
 <img src="docs/images/masternode_vps/rewards.png" alt="rewards" class="inline"/>
 
+
+
+## Configure masternode configuration files *Manually*
+If you didn't use *-g* option, since this installation method supports multiple masternodes, the zenzo configuration files have a node number added to them (e.g., zenzo_n1.conf, zenzo_n2.conf), stored in the /etc/masternodes directory. If you have a single masternode on the VPS, you will only need to edit /etc/masternodes/zenzo_n1.conf.
+
+To open zenzo_n1.conf for editing, enter these commands:
+```bash
+sudo apt-get install nano
+nano /etc/masternodes/zenzo_n1.conf
+```
+The next step adds your masternode private key.
+
+## Add masternode private key *Manually*
+If you didn't use *-g* option, what you need to change is only masternode private key.
+(We recommend using IPv6 which is the default, but if you choose IPv4 when you ran the installation script, please edit #NEW_IPv4_ADDRESS_FOR_MASTERNODE_NUMBER to your VPS IP address).
+After typing the nano command, you will see something similar to this.
+
+<img src="docs/images/masternode_vps/insert-your-masternode-private-key.png" alt="add private key" class="inline"/>
+
+Copy the masternode private key from the text file you saved it in, and replace HERE_GOES_YOUR_MASTERNODE_KEY_FOR_MASTERNODE_zenzo_1 with that private key (this typically begins with an 8).
+
+While you have this file opened, copy the information that follows after masternodeaddr=, starting with the open bracket. This is the masternode's IPv6 address and port, and will be needed for the wallet's masternode.conf file.
+
+Once you have your masternode private key entered, press <font color="Green">Ctrl+X</font> .
+Then press <font color="Green">Y</font> to save, and press Enter to exit.
+
+Finally, close and restart your ZENZO wallet so that it will have the new masternode configuration.
+
+## Start your masternodes *Manually*
+A script for starting all masternodes on the VPS has been created at /usr/local/bin/activate_masternodes_zenzo.sh.
+Run this command after your masternode configuration written above.
+
+```bash
+/usr/local/bin/activate_masternodes_zenzo
+```
+
+The masternode daemons will start and begin loading the ZENZO blockchain.
+
 ## Tips
  You can start and stop masternode client manually. Enter this commands.
 
@@ -407,7 +409,7 @@ To stop completely,
 service zenzo_n1 stop
 ```
 
- ### To start
+### To start
 ```
 /usr/local/bin/zenzod -daemon -pid=/var/lib/masternodes/zenzo1/zenzo.pid -conf=/etc/masternodes/zenzo_n1.conf -datadir=/var/lib/masternodes/zenzo1
 ```
@@ -419,7 +421,7 @@ service zenzo_n1 start
 
  ## Options of this script
  The _install.sh_ script support the following parameters:
- | Long Option  | Short Option | Values              | Description                                                         |
+| Long Option  | Short Option | Values              | Description                                                         |
 | :----------- | :----------- | ------------------- | ------------------------------------------------------------------- |
 | --project    | -p           | project, ex. "zenzo"| shortname for the project                                           |
 | --net        | -n           | "4" / "6"           | ip type for masternode. (ipv)6 is default                           |
