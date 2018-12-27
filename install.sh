@@ -375,55 +375,6 @@ function create_control_configuration() {
         fi
     done
 
-    # add well layout text for GUI Configuration
-    rm -f /tmp/${CODENAME}_gui.conf &>> ${SCRIPT_LOGFILE}
-
-    for NUM in $(seq 1 ${count}); do
-        if [ -n "${PRIVKEY[${NUM}]}" ]; then
-            PRIVKEY[${NUM}]=$(cat ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf | grep masternodeprivkey)
-            PRIVKEY[${NUM}]=${PRIVKEY[${NUM}]:18}
-            if [ "${net}" -eq 4 ]; then
-                cat >> /tmp/${CODENAME}_gui.conf <<EOF
-
-**************   ${CODENAME} Masternode ${NUM}   *****************
-Alias Name: ${CODENAME}MN${NUM}
-VPS IP: ${IPV4_ADDRESS}:${MNODE_INBOUND_PORT}
-Priv Key: ${PRIVKEY[${NUM}]}
-******************************************************************
-EOF
-            else
-                cat >> /tmp/${CODENAME}_gui.conf <<EOF
-
-**************   ${CODENAME} Masternode ${NUM}   *****************
-Alias Name: ${CODENAME}MN${NUM}
-VPS IP: [${IPV6_INT_BASE}:${NETWORK_BASE_TAG}::${NUM}]:${MNODE_INBOUND_PORT}
-Priv Key: ${PRIVKEY[${NUM}]}
-******************************************************************
-EOF
-            fi
-        else
-            if [ "${net}" -eq 4 ]; then
-                cat >> /tmp/${CODENAME}_gui.conf <<EOF
-
-**************   ${CODENAME} Masternode ${NUM}   *****************
-Alias Name: ${CODENAME}MN${NUM}
-VPS IP: ${IPV4_ADDRESS}:${MNODE_INBOUND_PORT}
-Priv Key: YOU NEED TO INPUT Masternode PrivKey to ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
-******************************************************************
-EOF
-            else
-                cat >> /tmp/${CODENAME}_gui.conf <<EOF
-
-**************   ${CODENAME} Masternode ${NUM}   *****************
-Alias Name: ${CODENAME}MN${NUM}
-VPS IP: [${IPV6_INT_BASE}:${NETWORK_BASE_TAG}::${NUM}]:${MNODE_INBOUND_PORT}
-Priv Key: YOU NEED TO INPUT Masternode PrivKey to ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
-******************************************************************
-EOF
-            fi
-        fi
-    done
-
 }
 
 #
