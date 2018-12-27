@@ -673,7 +673,7 @@ function build_mn_from_source() {
             rm -f ${MNODE_DAEMON}
             # old daemon must be removed before compilation. Would be better to remove it afterwards, however not possible with current structure
             if [ -f ${MNODE_DAEMON} ]; then
-                echo "UPDATE FAILED! Daemon ${MNODE_DAEMON} couldn't be removed. Please open an issue at https://github.com/masternodes/vps/issues. Thank you!"
+                echo "UPDATE FAILED! Daemon ${MNODE_DAEMON} couldn't be removed. Please open an issue at https://github.com/liray-unendlich/vps/issues. Thank you!"
                 exit 1
             fi
         fi
@@ -686,7 +686,7 @@ function build_mn_from_source() {
 
     # if it's not available after compilation, theres something wrong
     if [ ! -f ${MNODE_DAEMON} ]; then
-        echo "COMPILATION FAILED! Please open an issue at https://github.com/phoreproject/vps/issues. Thank you!"
+        echo "COMPILATION FAILED! Please open an issue at https://github.com/liray-unendlich/vps/issues. Thank you!"
         exit 1
     fi
 
