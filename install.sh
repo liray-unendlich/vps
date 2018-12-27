@@ -736,13 +736,6 @@ function final_call() {
     echo ""
     echo "**This configuration lines are on /tmp/${CODENAME}_masternode.conf. You can check this file with**"
     echo ""
-    echo "cat /tmp/${CODENAME}_masternode.conf"
-    cat /tmp/${CODENAME}_gui.conf
-    echo ""
-    echo "**For GUI Installation user, configuration files are on /tmp/${CODENAME}_gui.conf. You can check this file with**"
-    echo ""
-    echo "cat /tmp/${CODENAME}_gui.conf"
-    echo ""
     tput sgr0
 
 }
