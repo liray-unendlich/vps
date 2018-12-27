@@ -202,24 +202,10 @@ Click the Request payment button, and copy the address.
 
 Now go to the Send tab, paste the copied address, and send *exactly* 15,000 ZNZ to it in a single transaction. Wait for it to confirm on the blockchain. This is the collateral transaction that will be locked and paired with your new masternode. If you are setting up more than one masternode at one time, repeat this process for each one.
 
-<img src="docs/images/masternode_vps/step1-send10kphr.png" alt="sending 15kZNZ" class="inline"/>
+<img src="docs/images/masternode_vps/step1-send15kznz.png" alt="sending 15kZNZ" class="inline"/>
 
-### Step 2 - Generate Masternode Private Key
-Go to the **[Tools > Debug Console]** and enter these commands below:
-
-```bash
-masternode genkey
-```
-This will produce a masternode private key:
-
-<img src="docs/images/masternode_vps/step2-masternodegenkey.png" alt="generating masternode private key" class="inline"/>
-
-Copy this value to a text file. It will be needed for both the zenzo configuration file on the masternode VPS, and the masternode configuration file on the computer with the controlling ZENZO wallet.
-
-If you are setting up multiple masternodes, repeat this step for each one. Each time you run the masternode genkey command it will give you a new private key--it doesn't matter which one you use, but it is important that it is unique for each masternode and that the VPS zenzo configuration file and wallet masternode configuration file match (see below).
-
-### Step 3 - Masternode Outputs
-This will give you the rest of the information you need to configure your masternode in your ZENZO wallet--the transaction ID and the output index.
+### Step 2 - Masternode Outputs
+This will give you the rest of the information you need to configure your masternode in your ZENZO wallet-the transaction ID and the output index.
 
 ```bash
 masternode outputs
@@ -242,7 +228,7 @@ You only have a few steps remaining to complete your masternode configuration.
 ## Configure masternode configuration files
 The script generates private key for masternode with -g option. If you chose it, you should get like
 ```
-ZENZOMN1 [2001:19f0:5001:ca6:2085::1]:11771 88xrxxxxxxxxxxxxxxxxxxxxxxx7K 6b4c9xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx7ee23 0
+zenzoMN1 [2001:19f0:7001:483:893e::1]:26210 8EPkBLwEbVEDMXfcZUJDQU2uvtZLKnj8zLh61rsyqANV8hbEnmu COLLATERAL_TX_FOR_zenzoMN1 OUTPUT_NO_FOR_zenzoMN1
 ```
 
 Please paste this line(s) to your masternode.conf. You can open masternode.conf with **[Tools > Open Masternode Configuration File]**.
@@ -272,14 +258,14 @@ To check the status of your masternode, please enter this command in the VPS ter
 The output will look like this:
 ```
 {
-  "version": 1040500,
-  "protocolversion": 70005,
+  "version": 1000000,
+  "protocolversion": 70004,
   "walletversion": 61000,
   "balance": 0.00000000,
   "privatesend_balance": 0.00000000,
-  "blocks": 506209,
+  "blocks": 56209,
   "timeoffset": 0,
-  "connections": 44,
+  "connections": 14,
   "proxy": "",
   "difficulty": 42882.54964804553,
   "testnet": false,
@@ -353,7 +339,10 @@ The next step adds your masternode private key.
 ## Add masternode private key *Manually*
 If you didn't use *-g* option, what you need to change is only masternode private key.
 (We recommend using IPv6 which is the default, but if you choose IPv4 when you ran the installation script, please edit #NEW_IPv4_ADDRESS_FOR_MASTERNODE_NUMBER to your VPS IP address).
-After typing the nano command, you will see something similar to this.
+After typing
+```
+nano /etc/masternodes/zenzo_n1.conf
+```
 
 <img src="docs/images/masternode_vps/insert-your-masternode-private-key.png" alt="add private key" class="inline"/>
 
@@ -390,8 +379,8 @@ You can check your masternode status on VPS server. Use this command.
  {
    "txhash": "a7eba991be786ce80948e9099e26f6a816317b2142f9e5e12abea357f885d0f2",
    "outputidx": 1,
-   "netaddr": "[2001:19f0:5c01:457:2044::6]:11771",
-   "addr": "PEtMbHEuqo1QHs7Xy2wCTTmugAuemyd2mU",
+   "netaddr": "[2001:0000:5c01:457:2044::6]:26210",
+   "addr": "ZEtMbHEuqo1QHs7Xy2wCTTmugAuemyd2mU",
    "status": 4,
    "message": "Masternode successfully started"
  }
