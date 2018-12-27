@@ -32,7 +32,7 @@ For new masternode owners, **Vultr** is recommended as a VPS hosting provider, b
 
 You can use the following referral link to sign up with Vultr for VPS hosting:
 
-<a href="https://www.vultr.com/?ref=7316561"><img src="https://www.vultr.com/media/banner_2.png" width="468" height="60"></a>
+<a href="https://www.vultr.com/?ref=7346198"><img src="https://www.vultr.com/media/banner_2.png" width="468" height="60"></a>
 
 ## Deploy a new system
 
@@ -54,7 +54,7 @@ Select Ubuntu 16.04.
 
 ## VPS size
 
-The 25 GB SSD / 1024MBB Memory instance is enough for 2-3 masternodes. You may need more memory as the ZENZO blockchain grows over time, or if you want to run more masternodes.
+The 25 GB SSD / 1024MB Memory instance is enough for 2-3 masternodes. You may need more memory as the ZENZO blockchain grows over time, or if you want to run more masternodes.
 
 <img src="docs/images/masternode_vps/vps-size.png" alt="VPS sizing" class="inline"/>
 
@@ -421,19 +421,19 @@ service zenzo_n1 start
 
  ## Options of this script
  The _install.sh_ script support the following parameters:
-| Long Option  | Short Option | Values              | Description                                                         |
-| :----------- | :----------- | ------------------- | ------------------------------------------------------------------- |
-| --project    | -p           | project, ex. "zenzo"| shortname for the project                                           |
-| --net        | -n           | "4" / "6"           | ip type for masternode. (ipv)6 is default                           |
-| --release    | -r           | e.g. "tags/v1.3.3.1"| a specific git tag/branch, defaults to latest tested                |
-| --count      | -c           | number              | amount of masternodes to be configured                              |
-| --update     | -u           | --                  | update specified masternode daemon, combine with -p flag            |
-| --sentinel   | -s           | --                  | install and configure sentinel for node monitoring                  |
-| --wipe       | -w           | --                  | uninstall & wipe all related master node data, combine with -p flag |
-| --help       | -h           | --                  | print help info                                                     |
-| --startnodes | -x           | --                  | starts masternode(s) after installation                             |
-| --key        | -k           | masternode privkey  | preinput masternode private key to configuration files              |
-| --generate   | -g           | --                  | generate and preinput masternode private key                        |
+ | Long Option  | Short Option | Values              | Description                                                         |
+ | :----------- | :----------- | ------------------- | ------------------------------------------------------------------- |
+ | --project    | -p           | project, ex. "zenzo"| shortname for the project                                           |
+ | --net        | -n           | "4" / "6"           | ip type for masternode. (ipv)6 is default                           |
+ | --release    | -r           | e.g. "tags/v1.0.0"  | a specific git tag/branch, defaults to latest tested                |
+ | --count      | -c           | number              | amount of masternodes to be configured                              |
+ | --update     | -u           | --                  | update specified masternode daemon, combine with -p flag            |
+ | --sentinel   | -s           | --                  | install and configure sentinel for node monitoring                  |
+ | --wipe       | -w           | --                  | uninstall & wipe all related master node data, combine with -p flag |
+ | --help       | -h           | --                  | print help info                                                     |
+ | --startnodes | -x           | --                  | starts masternode(s) after installation                             |
+ | --key        | -k           | masternode privkey  | preinput masternode private key to configuration files              |
+ | --generate   | -g           | --                  | generate and preinput masternode private key                        |
 
 ## Issues and Questions
 Please open a GitHub Issue if there are problems with this installation method. Many ZENZO team members activel support people installing masternodes and can provide assistance in the ZENZO Discord channel.
