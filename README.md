@@ -1,16 +1,16 @@
-# ZENZO Masternode VPS Installation
+# ZENZO (ZNZ) Masternode VPS Installation
 
-This masternode installation script vastly simplifies the setup of a ZENZO masternode running on a virtual private server (VPS), and it also adds a number of other powerful features, including:
+This masternode installation script vastly simplifies the setup of a ZENZO (ZNZ) masternode running on a virtual private server (VPS) and it also adds a number of other powerful features, including:
 
 * IPv6 Support
-* Installs 1-100 (or more!) ZENZO masternodes in parallel on one VPS, with individual zenzo.conf and data directories
-* It can install masternodes for other coins on the same VPS as ZENZO
+* Installs 1-100 (or more!) ZENZO (ZNZ) masternodes in parallel on one VPS, with individual zenzo.conf and data directories
+* It can install masternodes for other coins on the same VPS as ZENZO (ZNZ)
 * 100% auto-compilation and 99% of configuration on the masternode side of things
 * Automatically compiling from the latest ZENZO release tag, or another tag can be specified
 * Some security hardening is done, including firewalling and a separate user, increasing security
 * Automatic startup for all masternode daemons
 
-Some notes and requirements:
+Some Notes and Requirements:
 
 * Script has only been tested on a Vultr VPS, but should work almost anywhere where IPv6 addresses are available
 * Currently only Ubuntu 16.04, 18.04 LTS Linux is supported
@@ -18,47 +18,45 @@ Some notes and requirements:
 
 This project was forked from https://github.com/masternodes/vps and https://github.com/liray-unendlich/vps. @marsmensch (Florian) is the primary author behind this VPS installation script for masternodes. If you would like to donate to him, you can use the BTC address below
 
-**Have fun, this is crypto after all!**
-
 ```
 BTC  33ENWZ9RCYBG7nv6ac8KxBUSuQX64Hx3x3
 ```
 
-# Install guide on vultr
+# Install Guide on Vultr
 
-## How to get VPS server
+## How to get VPS (Virtual Private Server)
 
 For new masternode owners, **Vultr** is recommended as a VPS hosting provider, but other providers that allow direct root SSH login access and offer Ubuntu 16.04, 18.04 LTS may work.
 
-You can use the following referral link to sign up with Vultr for VPS hosting:
+Feel free to use the following referral link to sign up with Vultr for VPS hosting:
 
 <a href="https://www.vultr.com/?ref=7346198"><img src="https://www.vultr.com/media/banner_2.png" width="468" height="60"></a>
 
-## Deploy a new system
+## Deploy a New System
 
 First, create a new VPS by clicking that small "+" button.
 
 <img src="docs/images/masternode_vps/deploy-a-new-system.png" alt="VPS creation" class="inline"/>
 
-## Location choice
+## Location Choice
 
-You can choose any location. You may wish to have it hosted in a city/country near you, or choose a different area to help with the global decentralization of the ZENZO masternode network.
+You can choose any location. You may wish to have it hosted in a city/country near you, or choose a different area to help with the global decentralization of the ZENZO (ZNZ) Masternode Network.
 
 <img src="docs/images/masternode_vps/location-choice.png" alt="VPS location choice" class="inline"/>
 
-## Linux distribution (Ubuntu 16.04 LTS)
+## Linux Distribution (Ubuntu 16.04 LTS)
 
 Select Ubuntu 16.04.
 
 <img src="docs/images/masternode_vps/linux-distribution--ubuntu-1604-lts-.png" alt="VPS location choice" class="inline"/>
 
-## VPS size
+## VPS Size
 
-The 25 GB SSD / 1024MB Memory instance is enough for 2-3 masternodes. You may need more memory as the ZENZO blockchain grows over time, or if you want to run more masternodes.
+The 25 GB SSD / 1024MB Memory instance is enough for 2-3 masternodes. You may need more memory, as the ZENZO (ZNZ) Blockchain grows over time, or if you want to run more masternodes.
 
 <img src="docs/images/masternode_vps/vps-size.png" alt="VPS sizing" class="inline"/>
 
-## Activating additional features (IPv6)
+## Activating Additional Features (IPv6)
 
 Toggle "Enable IPv6" to activate that feature--at Vultr there is no additional cost for this.
 
@@ -66,14 +64,14 @@ Toggle "Enable IPv6" to activate that feature--at Vultr there is no additional c
 
 You may wish to enable DDOS Protection to protect your masternodes against a potential denial of service attack, especially if you are running multiple masternodes from one VPS. Vultr charges an additional fee for this.
 
-## Hostnames & number of VPS
+## Hostnames & Number of VPS
 
 Choose how many instances you want and click "Deploy Now".
 
 <img src="docs/images/masternode_vps/hostnames--amp--number-of-vps.png" alt="VPS sizing" class="inline"/>
 
 ## Installation of PuTTY as SSH client (Windows)
-If you are running your wallet from Windows, install PuTTY while the server is being set up. You can download PuTTY from here: http://www.putty.org/. Skip this step if you are using a Mac--you will use the built in Terminal application instead.
+If you are running your wallet from Windows, install PuTTY while the server is being set up. You can download PuTTY from here: http://www.putty.org/. Skip this step if you are using a Mac (you will use the built-in Terminal application instead).
 
 Once PuTTY is installed, return to the Vultr dashboard to get the login details by clicking on the ... to the right of your server, and select Server Details.
 
@@ -112,22 +110,22 @@ Login to your newly installed node as "root".
 
 <img src="docs/images/masternode_vps/first-ssh-session.png" alt="VPS sizing" class="inline"/>
 
-Enter this command to copy the Masternode installation script and install a single ZENZO Masternode:
+Enter this command to copy the Masternode installation script and install a single ZENZO (ZNZ) Masternode:
 
 ```bash
 git clone https://github.com/Zenzo-Ecosystem/vps.git && cd vps && ./install.sh -p zenzo -g -x
 ```
 
-This prepares the system and installs the ZENZO Masternode daemon. This includes downloading the latest ZENZO masternode release, creating a swap file, configuring the firewall, and compiling the ZENZO Masternode from source code. This process takes about 10-15 minutes.
+This prepares the system and installs the ZENZO Masternode daemon. This includes downloading the latest ZENZO (ZNZ) masternode release, creating a swap file, configuring the firewall, and compiling the ZENZO (ZNZ) Masternode from source code. This process takes about 10-15 minutes.
 
 <img src="docs/images/masternode_vps/install-the-desired-masternode-and-amount.png" alt="VPS configuration" class="inline"/>
 
 While that is underway, go back to your local desktop and open zenzo-qt.
 
-### Preinput masternode private key within installation (you can generate masternode private key with Step 2 below).
+### Pre-Input Masternode Private Key Within Installation (Generate Masternode Private Key with Step 2 Below).
  In these cases, you can skip "Configure masternode configuration files" below.
-- If you already generated masternode private key
-  Enter this command.
+- If you already generated masternode private key,
+  enter this command.
   ```bash
   git clone https://github.com/Zenzo-Ecosystem/vps.git && cd vps && ./install.sh -p zenzo -k **PRIVATE KEY**
   ```
@@ -136,27 +134,27 @@ While that is underway, go back to your local desktop and open zenzo-qt.
   git clone https://github.com/Zenzo-Ecosystem/vps.git && cd vps && ./install.sh -p zenzo -k 87AqVXXXXXERNJxqBGdSS9LDS2vXXXXX5RdiiNd1zM7YAM7SHWX
   ```
   In this script, you can find configuration in masternode.conf in your PC.
-  enter this to check it.
+  Enter this to check it
   ```bash
   cat /tmp/zenzo_masternode.conf
   ```
   and add these lines to your masternode.conf.
 
-- If you want to generate masternode private key within masternode installation
-  Use this command
+- If you want to generate masternode private key within masternode installation,
+  use this command
   ```bash
   git clone https://github.com/Zenzo-Ecosystem/vps.git && cd vps && ./install.sh -p zenzo -g
   ```
-  And you can check generated private key in PuTTY. In this script, you can find configuration in masternode.conf in your PC.
-  enter this to check it.
+  and you can check generated private key in PuTTY. In this script, you can find configuration in masternode.conf in your PC.
+  Enter this to check it
   ```bash
   cat /tmp/zenzo_masternode.conf
   ```
   and add these lines to your masternode.conf.
 
-### More complex situations (ignore if you are installing a single masternode on a new VPS)
+### More Complex Situations (ignore if you are installing a single masternode on a new VPS)
 
-If you wish to install more than one masternode on the same VPS, you can add a -c parameter to tell the script how many to configure, so for example this would install three ZENZO masternodes (all entered on one line):
+If you wish to install more than one masternode on the same VPS, you can add a -c parameter to tell the script how many to configure, so for example this would install three ZENZO (ZN) masternodes (all entered on one line):
 
 ```bash
 git clone https://github.com/Zenzo-Ecosystem/vps.git && cd vps && ./install.sh -p zenzo -c 3 -g -x
@@ -170,7 +168,7 @@ git clone https://github.com/Zenzo-Ecosystem/vps.git && cd vps && ./install.sh -
 
 Using this command, you can skip the step for "Configure masternode configuration files", because the command above adds the masternode private keys to the masternode configuration files.
 
-If you are adding new masternode, (and if you installed 2 masternodes already)
+If you are adding a new masternode, (and if you installed 2 masternodes already)
 
 ```
 git clone https://github.com/Zenzo-Ecosystem/vps.git && cd vps && ./install.sh -p zenzo -c 3 -g -x
@@ -179,7 +177,7 @@ if you want to use --key option, add --key3 **MASTERNODE PRIVKEY 03**. You are a
 ```
 git clone https://github.com/Zenzo-Ecosystem/vps.git && cd vps && ./install.sh -p zenzo -c 3 -g -x
 ```
-for new 3rd masternode.
+for new third masternode.
 
 If you are upgrading your masternode(s) to a new release, you should first remove the old version of the VPS script so that the new one you download is tagged with the latest version, and then you add a -u parameter to upgrade existing nodes:
 
@@ -190,13 +188,13 @@ rm -rf /root/
 git clone https://github.com/Zenzo-Ecosystem/vps.git && cd vps && ./install.sh -p zenzo -u
 ```
 
-The project is configured to use the latest official release of the ZENZO masternode code, and we will update this project each time a new release is issued, but without downloading the latest version of this project and using the -u parameter, the script will not update an existing ZENZO node that is already installed.
+The project is configured to use the latest official release of the ZENZO (ZNZ) masternode code, and we will update this project each time a new release is issued, but without downloading the latest version of this project and using the -u parameter. The script will not update an existing ZENZO (ZNZ) node that is already installed.
 
-## Configure ZENZO Wallet
+## Configure ZENZO (ZNZ) Wallet
 ### Step1 - Create Collateral Transaction
 Once the wallet is open on your local computer, generate a new receive address and label it however you want to identify your masternode rewards (e.g., ZENZOMN1). This label will show up in your transactions each time you receive a block reward.
 
-Click the Request payment button, and copy the address.
+Click the Request payment button and copy the address.
 
 <img src="docs/images/masternode_vps/step1-newaddress.png" alt="making new address" class="inline"/>
 
@@ -205,7 +203,7 @@ Now go to the Send tab, paste the copied address, and send *exactly* 15,000 ZNZ 
 <img src="docs/images/masternode_vps/step1-send15kznz.png" alt="sending 15kZNZ" class="inline"/>
 
 ### Step 2 - Masternode Outputs
-This will give you the rest of the information you need to configure your masternode in your ZENZO wallet-the transaction ID and the output index.
+This will give you the rest of the information you need to configure your masternode in your ZENZO (ZNZ) wallet (the transaction ID and the output index).
 
 ```bash
 masternode outputs
@@ -217,7 +215,7 @@ The long string of characters is the *Transaction ID* for your masternode collat
 
 If you have multiple masternodes in the same wallet and have done the 15,000 ZNZ transactions for each of them, masternode outputs will display transaction IDs and indexes for each one. You can choose which private key to go with each transaction ID and index, as long as they are all different, and you make sure the corresponding lines in masternode.conf and the VPS zenzo configuration files match (see below).
 
-## End of installations
+## End of Installations
 When the script finishes, it will look similar to this:
 
 <img src="docs/images/masternode_vps/end-of-installation.png" alt="installation ended" class="inline"/>
@@ -225,7 +223,7 @@ When the script finishes, it will look similar to this:
 You only have a few steps remaining to complete your masternode configuration(the lines which surrounded by red lines are masternode configuration line. We will use this after).
 
 ## Finishing Wallet Configuration & Activate Masternode
-## Configure masternode configuration files
+## Configure Masternode Configuration Files
 The script generates private key for masternode with -g option. If you chose it, you should get like
 ```
 zenzoMN1 [2001:19f0:7001:483:893e::1]:26210 8EPkBLwEbVEDMXfcZUJDQU2uvtZLKnj8zLh61rsyqANV8hbEnmu COLLATERAL_TX_FOR_zenzoMN1 OUTPUT_NO_FOR_zenzoMN1
@@ -233,11 +231,11 @@ zenzoMN1 [2001:19f0:7001:483:893e::1]:26210 8EPkBLwEbVEDMXfcZUJDQU2uvtZLKnj8zLh6
 
 Please paste this line(s) to your masternode.conf. You can open masternode.conf with **[Tools > Open Masternode Configuration File]**.
 
-The image below shows another example using an IPv4 IP address. If you followed this guide you are probably using an IPv6 address that looks like the line above.
+The image below shows another example using an IPv4 IP address. If you followed this guide, you are probably using an IPv6 address that looks like the line above.
 
 <img src="docs/images/masternode_vps/masternode-conf.png" alt="editing masternode.conf" class="inline"/>
 
-If you are running multiple masternodes, you need to add one of these lines for each masternode, and make sure the private key on each line matches the corresponding private key you entered in the VPS zenzo configuration file for that masternode.
+If you are running multiple masternodes, you need to add one of these lines for each masternode and make sure the private key on each line matches the corresponding private key you entered in the VPS zenzo configuration file for that masternode.
 
 This file has the following format, with each value separated with a space:
 
@@ -247,8 +245,8 @@ This file has the following format, with each value separated with a space:
 * collateral_transaction_ID: This is the transaction ID you copied from masternode outputs.
 * collateral_output_index: This is the index you copied from masternode outputs.
 
-## Check syncing status of masternode
-The masternode cannot complete activation until it is fully synced with the ZENZO blockchain network.
+## Check Syncing Status of Masternode
+The masternode cannot complete activation until it is fully synced with the ZENZO (ZNZ) Blockchain Network.
 
 To check the status of your masternode, please enter this command in the VPS terminal. If you have multiple masternodes on the same VPS, you can change n1 to n2 etc. below to check the status of each one.
 
@@ -290,14 +288,14 @@ The output will look like this:
 }
 ```
 
-We're looking at the *blocks*, and need that to be the latest block in the blockchain. You can check your local wallet to see the latest block by hovering over the green check mark.
+We're looking at the *blocks* and need that to be the latest block in the blockchain. You can check your local wallet to see the latest block by hovering over the green check mark.
 
 <img src="docs/images/masternode_vps/check-blocks-number.png" alt="checking syncing status" class="inline"/>
 
-Once your masternode has synced up to the latest block, go to next step. The syncing process may take 15-30 minutes or more as the ZENZO blockchain grows. You can keep checking progress with the command above, by pressing the up arrow and Enter to repeat it.
+Once your masternode has synced up to the latest block, go to next step. The syncing process may take 15-30 minutes or more as the ZENZO (ZNZ) Blockchain grows. You can keep checking progress with the command above, by pressing the up arrow and Enter to repeat it.
 
 ## Start Masternode
-Go to the debug console of your ZENZO wallet **[Tools->Debug Console]** and enter the following command, replacing **mn-alias** with the name of the masternode in the Alias column of the Masternodes tab:
+Go to the debug console of your ZENZO (ZNZ) wallet **[Tools->Debug Console]** and enter the following command, replacing **mn-alias** with the name of the masternode in the Alias column of the Masternodes tab:
 
 ```
 startmasternode alias false mn-alias
@@ -305,7 +303,7 @@ startmasternode alias false mn-alias
 
 You may need to unlock the wallet **[Settings->Unlock Wallet]** before you run this command, entering your passphrase. You can lock the wallet after it is finished.
 
-If everything was setup correctly, after entering the command you will see something like this:
+If everything was setup correctly after entering the command, you will see something like this:
 ```
 {
 "overall" : "Successfully started 1 masternodes, failed to start 0, total 1",
@@ -315,19 +313,19 @@ If everything was setup correctly, after entering the command you will see somet
 "result" : "successful"
 }
 ```
-If you are setting up multiple masternodes, repeat this for each one. You can now close the debug console, return the Masternodes tab and check the status:
+If you are setting up multiple masternodes, repeat this for each one. You can now close the debug console, return to the Masternodes tab and check the status:
 <img src="docs/images/masternode_vps/check-masternode-status.png" alt="checking syncing status" class="inline"/>
 
 It should say ENABLED, and within an hour, the timer in the Active column should start increasing.
 
-Your ZENZO masternode is now set up and running! Depending on how many masternodes there are, it may take 12-24 hours before you see your first masternode reward--this is normal and rewards should come at more regular intervals after the first one.
+Congratulations! Your ZENZO (ZNZ) masternode is now set up and running! Depending on how many masternodes there are, it may take 12-24 hours before you see your first masternode reward. This is normal and rewards should come at more regular intervals after the first one.
 
 <img src="docs/images/masternode_vps/rewards.png" alt="rewards" class="inline"/>
 
 
 
-## Configure masternode configuration files *Manually*
-If you didn't use *-g* option, since this installation method supports multiple masternodes, the zenzo configuration files have a node number added to them (e.g., zenzo_n1.conf, zenzo_n2.conf), stored in the /etc/masternodes directory. If you have a single masternode on the VPS, you will only need to edit /etc/masternodes/zenzo_n1.conf.
+## Configure Masternode Configuration Files *Manually*
+If you didn't use the *-g* option, since this installation method supports multiple masternodes, the ZENZO configuration files have a node number added to them (e.g., zenzo_n1.conf, zenzo_n2.conf), stored in the /etc/masternodes directory. If you have a single masternode on the VPS, you will only need to edit /etc/masternodes/zenzo_n1.conf.
 
 To open zenzo_n1.conf for editing, enter these commands:
 ```bash
@@ -336,8 +334,8 @@ nano /etc/masternodes/zenzo_n1.conf
 ```
 The next step adds your masternode private key.
 
-## Add masternode private key *Manually*
-If you didn't use *-g* option, what you need to change is only masternode private key.
+## Add Masternode Private Key *Manually*
+If you didn't use the *-g* option, what you need to change is only masternode private key.
 (We recommend using IPv6 which is the default, but if you choose IPv4 when you ran the installation script, please edit #NEW_IPv4_ADDRESS_FOR_MASTERNODE_NUMBER to your VPS IP address).
 After typing
 ```
@@ -355,7 +353,7 @@ Then press <font color="Green">Y</font> to save, and press Enter to exit.
 
 Finally, close and restart your ZENZO wallet so that it will have the new masternode configuration.
 
-## Start your masternodes *Manually*
+## Start Your Masternodes *Manually*
 A script for starting all masternodes on the VPS has been created at /usr/local/bin/activate_masternodes_zenzo.sh.
 Run this command after your masternode configuration written above.
 
@@ -363,13 +361,13 @@ Run this command after your masternode configuration written above.
 /usr/local/bin/activate_masternodes_zenzo
 ```
 
-The masternode daemons will start and begin loading the ZENZO blockchain.
+The masternode daemons will start and begin loading the ZENZO (ZNZ) Blockchain.
 
 ## Tips
  You can start and stop masternode client manually. Enter this commands.
 
-### Check masternode status on VPS Server
-You can check your masternode status on VPS server. Use this command.
+### Check Masternode Status on the VPS
+You can check your masternode status on VPS. Use this command.
 
  ```
  /usr/local/bin/zenzo-cli -pid=/var/lib/masternodes/zenzo1/zenzo.pid -conf=/etc/masternodes/zenzo_n1.conf -datadir=/var/lib/masternodes/zenzo1 masternode status
@@ -386,9 +384,9 @@ You can check your masternode status on VPS server. Use this command.
  }
  ```
 
- like this, Your masternode is successfully started(Please check txhash, outputidx are same as your masternode.conf).
+ like this, Your masternode is successfully started (Please check txhash, outputidx are same as your masternode.conf).
 
-### To stop
+### To Stop
 ```
 /usr/local/bin/zenzo-cli -pid=/var/lib/masternodes/zenzo1/zenzo.pid -conf=/etc/masternodes/zenzo_n1.conf -datadir=/var/lib/masternodes/zenzo1 stop
 ```
@@ -398,7 +396,7 @@ To stop completely,
 service zenzo_n1 stop
 ```
 
-### To start
+### To Start
 ```
 /usr/local/bin/zenzod -daemon -pid=/var/lib/masternodes/zenzo1/zenzo.pid -conf=/etc/masternodes/zenzo_n1.conf -datadir=/var/lib/masternodes/zenzo1
 ```
@@ -408,7 +406,7 @@ If you stopped service "zenzo_n1", use
 service zenzo_n1 start
 ```
 
-## Options of this script
+## Options of This Script
 The _install.sh_ script support the following parameters:
 
  | Long Option  | Short Option | Values              | Description                                                         |
@@ -426,7 +424,7 @@ The _install.sh_ script support the following parameters:
  | --generate   | -g           | --                  | generate and preinput masternode private key                        |
 
 ## Issues and Questions
-Please open a GitHub Issue if there are problems with this installation method. Many ZENZO team members activel support people installing masternodes and can provide assistance in the ZENZO Discord channel.
+Please open a GitHub Issue if there are problems with this installation method. The ZENZO Team and community actively support people installing masternodes and can provide assistance in the ZENZO Discord channel.
 Here is a Discord invitation:
 
 https://discord.gg/hUDDV8H
