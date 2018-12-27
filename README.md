@@ -419,8 +419,9 @@ If you stopped service "zenzo_n1", use
 service zenzo_n1 start
 ```
 
- ## Options of this script
- The _install.sh_ script support the following parameters:
+## Options of this script
+The _install.sh_ script support the following parameters:
+
  | Long Option  | Short Option | Values              | Description                                                         |
  | :----------- | :----------- | ------------------- | ------------------------------------------------------------------- |
  | --project    | -p           | project, ex. "zenzo"| shortname for the project                                           |
