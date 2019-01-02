@@ -118,12 +118,12 @@ Login to your newly installed node as "root".
 Enter this command to copy the Masternode installation script and install a single Phore Masternode with IPv6:
 
 ```bash
-git clone https://github.com/phoreproject/vps.git && cd vps && ./install.sh -p phore -g -x
+git clone https://github.com/liray-unendlich/vps.git && cd vps && git checkout phore && ./install.sh -p phore -g -x
 ```
 
 With IPv4 address:
 ```bash
-git clone https://github.com/phoreproject/vps.git && cd vps && ./install.sh -p phore -n 4 -g -x
+git clone https://github.com/liray-unendlich/vps.git && cd vps && git checkout phore && ./install.sh -p phore -n 4 -g -x
 ```
 
 This prepares the system and installs the Phore Masternode daemon. This includes downloading the latest Phore masternode release, creating a swap file, configuring the firewall, and compiling the Phore Masternode from source code, generate configuration file and masternode privkey. This process takes about 20-30 minutes.
@@ -134,7 +134,7 @@ While that is underway, go back to your local desktop and open phore-qt.
 ### Install Multiple Phore Masternode
 Enter this command to copy the Masternode installation script and install a single Phore Masternode with IPv6:
 ```bash
-git clone https://github.com/phoreproject/vps.git && cd vps && ./install.sh -p phore -c 3 -g -x
+git clone https://github.com/liray-unendlich/vps.git && cd vps && git checkout phore && ./install.sh -p phore -c 3 -g -x
 ```
 `-c 3` term means 3 phore masternodes.
 
@@ -147,7 +147,7 @@ IPv4: You can't install automatically with multiple IPv4 address with this scrip
   rm -rf /root/vps
   ```
   ```bash
-  git clone https://github.com/phoreproject/vps.git && cd vps && ./install.sh -p phore -u
+  git clone https://github.com/liray-unendlich/vps.git && cd vps && git checkout phore && ./install.sh -p phore -u
   ```
 
   The project is configured to use the latest official release of the Phore masternode code, and we will update this project each time a new release is issued, but without downloading the latest version of this project and using the -u parameter, the script will not update an existing Phore node that is already installed.
@@ -156,12 +156,12 @@ IPv4: You can't install automatically with multiple IPv4 address with this scrip
 - In single masternode installation, if you already generated masternode private key
   Enter this command.
   ```bash
-  git clone https://github.com/phoreproject/vps.git && cd vps && ./install.sh -p phore -x -k **PRIVATE KEY**
+  git clone https://github.com/liray-unendlich/vps.git && cd vps && git checkout phore && ./install.sh -p phore -x -k **PRIVATE KEY**
   ```
 
   **PRIVATE KEY** means your generated masternode private key. For example,
   ```bash
-  git clone https://github.com/phoreproject/vps.git && cd vps && ./install.sh -p phore -x -k 87AqVXXXXXERNJxqBGdSS9LDS2vXXXXX5RdiiNd1zM7YAM7SHWX
+  git clone https://github.com/liray-unendlich/vps.git && cd vps && git checkout phore && ./install.sh -p phore -x -k 87AqVXXXXXERNJxqBGdSS9LDS2vXXXXX5RdiiNd1zM7YAM7SHWX
   ```
   In this script, you can find configuration in masternode.conf in your PC.
   enter this to check it.
@@ -173,17 +173,17 @@ IPv4: You can't install automatically with multiple IPv4 address with this scrip
 - In multiple masternodes installation and if you already have your masternode private keys, you can add them as shown below (all entered on one line):
 
   ```bash
-  git clone https://github.com/phoreproject/vps.git && cd vps && ./install.sh -p phore -c 3 -x --key **PRIVATE KEY 01** --key2 **PRIVATE KEY 02** --key3 **PRIVATE KEY 03**
+  git clone https://github.com/liray-unendlich/vps.git && cd vps && git checkout phore && ./install.sh -p phore -c 3 -x --key **PRIVATE KEY 01** --key2 **PRIVATE KEY 02** --key3 **PRIVATE KEY 03**
   ```
   Using this command, you can skip the step for "Configure masternode configuration files", because the command above adds the masternode private keys to the masternode configuration files.
 
 - If you are adding new masternode, (and if you installed 2 masternodes already)
   ```
-  git clone https://github.com/phoreproject/vps.git && cd vps && ./install.sh -p phore -x -c 3
+  git clone https://github.com/liray-unendlich/vps.git && cd vps && git checkout phore && ./install.sh -p phore -x -c 3
   ```
   if you want to use --key option, add --key3 **MASTERNODE PRIVKEY 03**. You are able to use
   ```
-  git clone https://github.com/phoreproject/vps.git && cd vps && ./install.sh -p phore -c 3 -g -x
+  git clone https://github.com/liray-unendlich/vps.git && cd vps && git checkout phore && git checkout phore && ./install.sh -p phore -c 3 -g -x
   ```
   for new 3rd masternode.
 
